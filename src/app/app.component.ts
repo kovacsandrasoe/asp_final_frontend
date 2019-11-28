@@ -19,8 +19,7 @@ export class AppComponent {
     this.http = http;
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
-  ngOnInit() {
+  refresh() {
     this.collection = new Array<Word>();
     this.getWords().subscribe(w => {
       this.collection = w;
@@ -40,8 +39,7 @@ export class AppComponent {
   public NewWord(hw: HTMLInputElement, fw: HTMLInputElement) {
     const w = new Word(hw.value, fw.value);
     this.createWord(w).subscribe(a => {
-      console.log(a);
-      this.ngOnInit();
+      this.refresh();
     });
 
   }
